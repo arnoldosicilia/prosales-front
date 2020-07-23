@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { PaymentComponent } from '../payment/payment.component';
 import { Client } from 'src/app/models/client.model';
+import { MatDialog } from '@angular/material/dialog';
+
 import { Product } from 'src/app/models/product.model';
 import { BasketProduct } from 'src/app/models/basketProduct.model';
 import { ClientService } from 'src/app/services/client.service';
@@ -31,7 +34,8 @@ export class PosComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private clientService: ClientService
+    private clientService: ClientService,
+    private dialog: MatDialog
   ) { }
 
 
@@ -95,5 +99,25 @@ export class PosComponent implements OnInit {
     this.totalTax = parseFloat(basketCopy.reduce((acum, elem) => acum + (elem.total - (elem.total / (elem.tax / 100 + 1))), 0).toFixed(2));
     this.basket = basketCopy;
   }
+
+  openPaymentModal() {
+    const dialogRef = this.dialog.open(PaymentComponent, {
+      data: {
+        amountValue: this.total,
+        basket: this.basket,
+        tax: this.totalTax,
+      },
+      height: '300px',
+      width: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('closed');
+    });
+
+  }
+
+
+
 
 }

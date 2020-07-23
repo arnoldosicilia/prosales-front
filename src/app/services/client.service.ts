@@ -52,5 +52,7 @@ export class ClientService {
         // instead of just logging it to the console
         console.error(error);
         return Observable.throw(error.json() || 'Server error');
+
+        
     } */
 }

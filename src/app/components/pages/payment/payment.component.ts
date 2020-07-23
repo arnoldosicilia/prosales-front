@@ -1,10 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 
 import { ProductService } from 'src/app/services/product.service';
 import { ClientService } from 'src/app/services/client.service';
 import { SalesService } from 'src/app/services/sales.service';
 import { CompanyService } from 'src/app/services/company.service';
 import { UserService } from 'src/app/services/user.service';
+
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { BasketProduct } from 'src/app/models/basketProduct.model';
 import { Client } from 'src/app/models/client.model';
@@ -24,25 +26,20 @@ import { Router } from '@angular/router';
 })
 export class PaymentComponent implements OnInit {
 
-  @Input() amountValue: number;
+  amountValue: number;
   amountValueCopy: number;
   discountValue: number;
-  @Input() basket: BasketProduct[];
-  http: HttpClient;
-  router: Router
-
+  basket: BasketProduct[];
   client: any;
   company: any;
-
   username: string;
   user: User;
-
   showClient: boolean;
   showCompany: boolean;
-
-  @Input() tax: number;
+  tax: number;
   deposited: number;
   remaining: number;
+  change: number;
   paymentMethod: any;
 
   constructor(
@@ -50,18 +47,26 @@ export class PaymentComponent implements OnInit {
     private clientService: ClientService,
     private salesService: SalesService,
     private companyService: CompanyService,
-
-
+    private dialogRef: MatDialogRef<PaymentComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   ngOnInit(): void {
-    this.amountValueCopy = this.amountValue;
+    this.amountValue = this.data.amountValue;
+    this.amountValueCopy = this.data.amountValue;
+    this.basket = this.data.basket;
+    this.tax = this.data.tax;
     this.showClient = false;
     this.showCompany = false;
     this.deposited = 0;
     this.username = AuthUtils.getUsername();
+    this.remaining = 0;
+  }
 
-    console.log(this.username)
+  closeModal() {
+    console.log(this.data)
+    console.log(this.amountValue)
+    this.dialogRef.close();
   }
 
   getData = (companyId, clientId) => {
@@ -88,6 +93,30 @@ export class PaymentComponent implements OnInit {
     newSale.products.map(elm => this.productService.removeStock(elm.id, elm.qty));
   }
 
+  getTab(event) {
+    event.index === 0 ? this.paymentMethod = "cash" : this.paymentMethod = "card";
+    console.log("se llama al tab con ----", event);
+    console.log(this.paymentMethod)
+  }
+
+
+  handleChange(e) {
+    const { name, value } = e.target;
+
+    if (name === 'amount') {
+      this.amountValue = value;
+    } else if (name === 'discount') {
+      this.discountValue = parseFloat(value);
+      this.amountValueCopy -= this.discountValue;
+    } else if (name === 'deposited') {
+      this.deposited = parseFloat(value);
+      (this.amountValueCopy - this.deposited) < 0 ? this.remaining = (this.amountValueCopy - this.deposited) : this.remaining = 0;
+      (this.amountValueCopy - this.deposited) < 0 ? this.change = 0 : this.change = -(this.amountValueCopy - this.deposited);
+    }
+  }
+
 
 
 }
+
+

@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="pay-zone">
-            <div class="pay-button button" [routerLink]="['/pos/payment']">
+            <div class="pay-button button" (click)="openPaymentModal()">
                 <p>PAGAR: {{total}} €</p>
             </div>
         </div>

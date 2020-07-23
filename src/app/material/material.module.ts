@@ -23,6 +23,7 @@ import { MatSortModule } from '@angular/material/sort';
 
 
 
+
 @NgModule({
     exports: [
         MatCardModule,
@@ -47,6 +48,7 @@ import { MatSortModule } from '@angular/material/sort';
         MatTooltipModule,
         MatPaginatorModule,
         MatSortModule
+
     ]
 })
 export class MaterialModule { }

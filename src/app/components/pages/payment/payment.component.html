@@ -5,33 +5,45 @@
                 <p class="client-header">Client:</p>
                 <p class="client-name">client.fiscalName</p>
             </div>
-            <mat-tab-group mat-align-tabs="start">
+            <mat-tab-group mat-align-tabs="start" (selectedTabChange)="getTab($event)">
 
 
-                <mat-tab label="Cash" id="cash" name="cash">
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <mat-icon>euro_symbol</mat-icon>
+                        <p>CASH</p>
+                    </ng-template>
                     <div>
                         <div class="amount-pay-remaining">
                             <p class="amount-header">Recibed:</p>
                             <div class="input-container">
-                                <input type="number" name="deposited" value="" /> €
+                                <input type="number" name="deposited" (change)="handleChange($event)" /> €
                             </div>
                         </div>
                         <div class="amount-pay-remaining">
-                            <p class="amount-header">this.state.remaining > 0 ? "Restante:" : "Cambio"</p>
-                            <div class="input-container">€</div>
+                            <p class="amount-header">Falta</p>
+                            <div class="input-container">{{change}}€</div>
+                        </div>
+                        <div class="amount-pay-remaining">
+                            <p class="amount-header">Cambio</p>
+                            <div class="input-container">{{remaining}}€</div>
                         </div>
                     </div>
                 </mat-tab>
 
                 <mat-icon>credit_card</mat-icon>
-                <mat-tab label="Credit Card">
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <mat-icon>credit_card</mat-icon>
+                        <p>CARD</p>
+                    </ng-template>
                     <h2>Proceed with the Card Lector Instructions</h2>
                 </mat-tab>
             </mat-tab-group>
 
 
             <div class="payment-buttons">
-                <div class="button cancel">
+                <div class="button cancel" (click)="closeModal()">
                     CANCELAR
                 </div>
                 <div class="button complete">
@@ -101,10 +113,10 @@
             </div>
             <div class="discount">
                 <p>Descuento €:</p>
-                <input type="number" value="this.state.discountValue" name="discount" />
+                <input type="number" name="discount" (change)="handleChange($event)" autofocus /> €
             </div>
             <div class="total-basket">
-                <p>TOTAL: this.state.amountValue€</p>
+                <p>TOTAL: {{amountValueCopy}}</p>
             </div>
         </div>
     </div>
