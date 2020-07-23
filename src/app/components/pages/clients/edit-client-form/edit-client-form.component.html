@@ -1,0 +1,45 @@
+<p>edit-client-form works!</p>
+<form novalidate [formGroup]="clientForm">
+    <mat-card>
+        <mat-toolbar style="background-color: #FFF">
+            <mat-toolbar-row>
+                <span class="view-card-title">
+                    <h1>
+                        <mat-icon>supervisor_account</mat-icon> {{ pageTitle }}
+                    </h1>
+                </span>
+                <span class="title-spacer"></span>
+                <mat-card-actions>
+                    <button mat-mini-fab color="primary" class="" style="margin-right:10px; "
+                        [routerLink]="['/accounts']">
+                        <mat-icon>close</mat-icon>
+                    </button>
+
+                </mat-card-actions>
+
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+        <mat-card-content style="margin: 5 0 5 10px;">
+
+            <mat-grid-list cols="12" rowHeight="120px">
+                <mat-grid-tile [colspan]="fieldColspan">
+                </mat-grid-tile>
+            </mat-grid-list>
+            <div class="form-card">
+                <mat-grid-list cols="12" rowHeight="80px">
+                    <mat-grid-tile [colspan]="fieldColspan" *ngFor="let field of fields">
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>{{field}}</mat-label>
+                            <input matInput id="{{field}}" type="text" placeholder="{{field}}"
+                                formControlName="{{field}}" />
+                        </mat-form-field>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+            </div>
+
+        </mat-card-content>
+
+    </mat-card>
+</form>

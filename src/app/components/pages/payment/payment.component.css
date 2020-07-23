@@ -94,8 +94,8 @@
 
 .payment-wrapper .payment-content .left-wrapper .payment-buttons .button.cancel {
     width: 30%;
-    border: 2px solid var(--red);
-    color: var(--red);
+    border: 2px solid red;
+    color: red;
     margin: 8px 0 8px 8px;
 }
 

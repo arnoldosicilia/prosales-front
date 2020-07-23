@@ -27,18 +27,17 @@ export class ClientService {
         return this.http.get<Client[]>(this.urlBasic.concat('clients'), this.httpOptions);
     }
 
-    getClient(id: number) {
+    getClient(id: number): Observable<Client> {
         const url = `${this.urlBasic}client${'/'}${id}`;
         console.log(url);
-        return this.http.get(url, this.httpOptions);
+        return this.http.get<Client>(url, this.httpOptions);
     }
 
     // tslint:disable-next-line: typedef
-    createClient(client: Client) {
+    createClient(client: Client): Observable<Client> {
         const url = `${this.urlBasic}`;
         console.log(url);
-        return this.http.post<Client>(url.concat('client'), client, this.httpOptions)
-            .subscribe(data => this.router.navigate(['clients']), err => console.log(err));
+        return this.http.post<Client>(url.concat('client'), client, this.httpOptions);
     }
 
     // tslint:disable-next-line: typedef

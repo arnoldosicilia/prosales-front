@@ -2,8 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Client } from '../../../models/client.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { ClientFormComponent } from './client-form/client-form.component';
+
 import { ClientService } from '../../../services/client.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthUtils } from 'src/app/utils/auth-utils';
 
 
 @Component({
@@ -18,17 +21,20 @@ export class ClientsComponent implements OnInit {
   pageTitle = 'Clients';
   icon = 'people_alt';
   clients: Client[] = [];
-  displayedColumns: string[] = ['id', 'nif', 'email', 'defaultPayMethod', 'commercialName', 'fiscalName', 'city', 'province', 'country', 'web', 'telNumber', 'credit'];
+  displayedColumns: string[] = ['id', 'nif', 'email', 'commercialName', 'fiscalName', 'city', 'province', 'country', 'web', 'telNumber', 'credit'];
   dataSource: any = null;
+  isAdmin: boolean;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(
-    private clientService: ClientService
+    private clientService: ClientService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
+    this.isAdmin = AuthUtils.isAdmin();
     this.isErrorLoading = !(this.isLoading = true);
     this.clientService.getClients().subscribe(data => {
       this.dataSource = data;
@@ -39,5 +45,11 @@ export class ClientsComponent implements OnInit {
       console.log(err);
     });
   }
-
+  openCrateToggle() {
+    const dialogRef = this.dialog.open(ClientFormComponent, {
+      data: {},
+      height: '470px',
+      width: '800px',
+    });
+  }
 }

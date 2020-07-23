@@ -42,6 +42,7 @@ export class PosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData();
+    console.log(this.clients)
   }
 
   getData = () => {
@@ -106,6 +107,7 @@ export class PosComponent implements OnInit {
         amountValue: this.total,
         basket: this.basket,
         tax: this.totalTax,
+        client: this.client,
       },
       height: '300px',
       width: '400px',
@@ -116,6 +118,8 @@ export class PosComponent implements OnInit {
     });
 
   }
+
+
 
 
 

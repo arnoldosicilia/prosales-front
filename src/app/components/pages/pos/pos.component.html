@@ -23,9 +23,9 @@
     <div class="right-wrapper">
         <div class="search-bar">
             <i class="material-icons">keyboard_arrow_down</i>
-            <select name="client" value=this.state.clientSearchInput>
+            <select name="client" [(ngModel)]="client">
                 <option default>Añadir un cliente</option>
-                <option *ngFor="let client of clients" data-id={{client.id}}>{{client.id}}</option>
+                <option *ngFor="let client of clients" [value]="client" data-id={{client.id}}>{{client.id}}</option>
             </select>
         </div>
         <div class="list-labels right">

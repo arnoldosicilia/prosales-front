@@ -24,6 +24,7 @@ import { CompanyService } from './services/company.service';
 import { TableComponent } from './components/ui/table/table.component';
 import { PaymentComponent } from './components/pages/payment/payment.component';
 import { LoginComponent } from './components/login/login.component';
+import { ClientFormComponent } from './components/pages/clients/client-form/client-form.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { LoginComponent } from './components/login/login.component';
     HomeComponent,
     TableComponent,
     PaymentComponent,
-    LoginComponent
+    LoginComponent,
+    ClientFormComponent
   ],
   imports: [
     BrowserModule,

@@ -22,11 +22,11 @@
                         </div>
                         <div class="amount-pay-remaining">
                             <p class="amount-header">Falta</p>
-                            <div class="input-container">{{change}}€</div>
+                            <div class="input-container">{{remaining}}€</div>
                         </div>
                         <div class="amount-pay-remaining">
                             <p class="amount-header">Cambio</p>
-                            <div class="input-container">{{remaining}}€</div>
+                            <div class="input-container">{{change}}€</div>
                         </div>
                     </div>
                 </mat-tab>
@@ -43,24 +43,24 @@
 
 
             <div class="payment-buttons">
-                <div class="button cancel" (click)="closeModal()">
+                <button class="button cancel" mat-button color="warn" (click)="closeModal()">
                     CANCELAR
-                </div>
-                <div class="button complete">
+                </button>
+
+                <button class="button complete" mat-button [disabled]="disableComplete" (click)="addSale()">
                     COMPLETAR
-                </div>
+                </button>
             </div>
         </div>
         <div class="right-wrapper">
             <div class="ticket">
                 <div class="company-data">
-                    <p>company.data.fiscalName</p>
-                    <p>company.data.address</p>
-                    <p>company.data.city</p>
-                    <p>this.state.company.data.email</p>
-                    <p>this.state.company.data.telNumber</p>
-                    <br />
-                    <p>------------------------------------</p>
+                    <p>{{client.id}}</p>
+                    <p>{{company.address}}</p>
+                    <p>{{company.city}} {{company.province}} {{company.zipCode}}</p>
+                    <p>{{company.email}}</p>
+                    <p>{{company.telNumber}}</p>
+                    <p>-----------------------------</p>
                 </div>
                 <div class="ticket-data">
                     <div class="item header">
@@ -75,15 +75,15 @@
                         </div>
                     </div>
 
-                    <div key="product._id" class="item">
+                    <div class="item" *ngFor="let product of basket">
                         <div class="qty">
-                            product.qty
+                            {{product.qty}}
                         </div>
                         <div class="name">
-                            product.name
+                            {{product.name}}
                         </div>
                         <div class="total">
-                            product.total.toFixed(2)€
+                            {{product.total.toFixed(2)}}€
                         </div>
                     </div>
 
@@ -93,21 +93,21 @@
 
                     <div>
                         <p class="title">SUB TOTAL:</p>
-                        <p>this.state.amountValueCopy€</p>
+                        <p>{{amountValue}} €</p>
                     </div>
                     <div>
                         <p class="title">DESCUENTO:</p>
-                        <p>this.state.discountValue€</p>
+                        <p>{{discountValue}} €</p>
                     </div>
 
 
                     <div>
                         <p class="title">IVA inc.:</p>
-                        <p>this.state.tax €</p>
+                        <p>{{tax}} €</p>
                     </div>
                     <div>
                         <p class="title">TOTAL:</p>
-                        <p> this.state.amountValue €</p>
+                        <p> {{amountValueCopy}} €</p>
                     </div>
                 </div>
             </div>

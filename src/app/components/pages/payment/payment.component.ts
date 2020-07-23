@@ -30,8 +30,8 @@ export class PaymentComponent implements OnInit {
   amountValueCopy: number;
   discountValue: number;
   basket: BasketProduct[];
-  client: any;
-  company: any;
+  client: Client;
+  company: any = { fiscalName: "Prueba", address: "Prueba Address", city: "City", province: "Province", zipCode: "zipCode", email: "Prueba@Prueba.com", telNumber: "922222222" }
   username: string;
   user: User;
   showClient: boolean;
@@ -41,6 +41,7 @@ export class PaymentComponent implements OnInit {
   remaining: number;
   change: number;
   paymentMethod: any;
+  disableComplete: boolean;
 
   constructor(
     private productService: ProductService,
@@ -54,18 +55,19 @@ export class PaymentComponent implements OnInit {
   ngOnInit(): void {
     this.amountValue = this.data.amountValue;
     this.amountValueCopy = this.data.amountValue;
+    this.remaining = this.data.amountValue;
     this.basket = this.data.basket;
     this.tax = this.data.tax;
     this.showClient = false;
     this.showCompany = false;
     this.deposited = 0;
     this.username = AuthUtils.getUsername();
-    this.remaining = 0;
+    this.disableComplete = true;
+    this.client = this.data.client;
+
   }
 
   closeModal() {
-    console.log(this.data)
-    console.log(this.amountValue)
     this.dialogRef.close();
   }
 
@@ -75,10 +77,10 @@ export class PaymentComponent implements OnInit {
     this.companyService.getUserByUsername(this.username).subscribe(data => this.user = data);
   }
 
-  addSale = () => {
+  addSale() {
 
     const newSale: Sale = {
-      author: this.client.id,
+      author: this.user.id,
       client: this.client.id,
       products: this.basket,
       paymentMethod: this.paymentMethod,
@@ -91,12 +93,13 @@ export class PaymentComponent implements OnInit {
 
     this.salesService.createSale(newSale);
     newSale.products.map(elm => this.productService.removeStock(elm.id, elm.qty));
+    this.closeModal();
   }
 
   getTab(event) {
     event.index === 0 ? this.paymentMethod = "cash" : this.paymentMethod = "card";
-    console.log("se llama al tab con ----", event);
-    console.log(this.paymentMethod)
+
+    console.log(this.client)
   }
 
 
@@ -110,10 +113,15 @@ export class PaymentComponent implements OnInit {
       this.amountValueCopy -= this.discountValue;
     } else if (name === 'deposited') {
       this.deposited = parseFloat(value);
-      (this.amountValueCopy - this.deposited) < 0 ? this.remaining = (this.amountValueCopy - this.deposited) : this.remaining = 0;
-      (this.amountValueCopy - this.deposited) < 0 ? this.change = 0 : this.change = -(this.amountValueCopy - this.deposited);
+      (this.amountValueCopy - this.deposited) > 0 ? this.remaining = (this.amountValueCopy - this.deposited) : this.remaining = 0;
+      (this.amountValueCopy - this.deposited) > 0 ? this.change = 0 : this.change = -(this.amountValueCopy - this.deposited);
+      this.remaining <= 0 ? this.disableComplete = false : this.disableComplete = true;
     }
   }
+
+
+
+
 
 
 

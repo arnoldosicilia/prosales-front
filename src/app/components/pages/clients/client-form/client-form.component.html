@@ -1,0 +1,125 @@
+<form novalidate (ngSubmit)="saveClient()" [formGroup]="clientForm">
+    <mat-card>
+
+        <mat-toolbar-row style="background-color: #FFF">
+            <mat-toolbar-row>
+                <span class="view-card-title"> New Client</span>
+                <span class="title-spacer"></span>
+                <mat-card-actions>
+                    <button mat-mini-fab class="primary" style="margin-right:10px; background-color:green"
+                        type="submit">
+                        <mat-icon>save</mat-icon>
+                    </button>
+                    <button mat-mini-fab class="" style="margin-right:10px; " [routerLink]="['/salesrep']">
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </mat-toolbar-row>
+        </mat-toolbar-row>
+
+        <mat-card-content style="margin: 5 0 5 10px;">
+            <div class="form-card">
+                <mat-grid-list cols="12" rowHeight="80px">
+                    <mat-grid-tile [colspan]="fieldColspan">
+                        <!-- colspan="4"> -->
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Nif</mat-label>
+                            <input matInput id="nif" type="text" placeholder="Nif required" formControlName="nif" />
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="fieldColspan">
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput id="email" type="text" placeholder="email (required)"
+                                formControlName="email" />
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="fieldColspan">
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Commercial Name</mat-label>
+                            <input matInput id="commercialName" type="text" placeholder="commercialName (required)"
+                                formControlName="commercialName" />
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="fieldColspan">
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Fiscal Name</mat-label>
+                            <input matInput id="fiscalName" type="text" placeholder="fiscalName (required)"
+                                formControlName="fiscalName" />
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+
+                    <mat-grid-tile [colspan]="fieldColspan">
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>address</mat-label>
+                            <input matInput id="address" type="text" placeholder="address (required)"
+                                formControlName="address" />
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+
+
+                    <mat-grid-tile [colspan]="fieldColspan">
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>city</mat-label>
+                            <input matInput id="city" type="text" placeholder="city (required)"
+                                formControlName="city" />
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+
+                    <mat-grid-tile [colspan]="fieldColspan">
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>province</mat-label>
+                            <input matInput id="province" type="text" placeholder="province (required)"
+                                formControlName="province" />
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="fieldColspan">
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Zip Code</mat-label>
+                            <input matInput id="zipCode" type="text" placeholder="zipCode (required)"
+                                formControlName="zipCode" />
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="fieldColspan">
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>Country</mat-label>
+                            <input matInput id="country" type="text" placeholder="country (required)"
+                                formControlName="country" />
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="fieldColspan">
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>web</mat-label>
+                            <input matInput id="web" type="text" placeholder="web (required)" formControlName="web" />
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="fieldColspan">
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>telNumber</mat-label>
+                            <input matInput id="telNumber" type="text" placeholder="telNumber (required)"
+                                formControlName="telNumber" />
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="fieldColspan">
+                        <mat-form-field class="form-field" appearance="outline">
+                            <mat-label>credit</mat-label>
+                            <input matInput id="credit" type="text" placeholder="credit (required)"
+                                formControlName="credit" />
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                </mat-grid-list>
+            </div>
+        </mat-card-content>
+
+    </mat-card>
+</form>

@@ -51,6 +51,7 @@ export class CompanyService {
 
 
     getUserByUsername(username: string): Observable<User> {
+        console.log("se llama al get user by username")
         const url = `${this.urlBasic}username${'/'}${username}`;
         console.log(url);
         return this.http.get<User>(url, this.httpOptions);
