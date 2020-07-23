@@ -37,7 +37,7 @@ export class ClientService {
     createClient(client: Client): Observable<Client> {
         const url = `${this.urlBasic}`;
         console.log(url);
-        return this.http.post<Client>(url.concat('client'), client, this.httpOptions);
+        return this.http.post<Client>(url.concat('clients'), client, this.httpOptions);
     }
 
     // tslint:disable-next-line: typedef

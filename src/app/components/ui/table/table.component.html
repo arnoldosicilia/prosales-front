@@ -19,6 +19,14 @@
     </mat-toolbar-row>
 
     <mat-table #table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="edit" *ngIf="isAdmin">
+            <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-mini-fab color="accent" (click)="openEdit()">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
         <ng-container matColumnDef="image" *ngIf="image">
             <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
             <mat-cell *matCellDef="let element"> <img src="{{element.img}}" alt="{{element.name}}" width="60px">

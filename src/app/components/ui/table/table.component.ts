@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, Input, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { AuthUtils } from 'src/app/utils/auth-utils';
 
 @Component({
   selector: 'app-table',
@@ -15,6 +16,9 @@ export class TableComponent implements OnInit, OnChanges {
   @Input() columns: string[];
   @Input() data: any;
   @Input() image: boolean;
+  isAdmin: boolean;
+
+
 
   displayedColumns: string[] = [];
 
@@ -29,9 +33,11 @@ export class TableComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
+    this.isAdmin = AuthUtils.isAdmin();
     this.displayedColumns = [...this.columns];
-    console.log(this.displayedColumns)
+
     this.image && this.displayedColumns.unshift("image");
+    this.isAdmin && this.displayedColumns.unshift("edit");
   }
 
 
@@ -49,4 +55,7 @@ export class TableComponent implements OnInit, OnChanges {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  openEdit() {
+
+  }
 }

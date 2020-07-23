@@ -2,7 +2,6 @@ export interface Client {
     id: number;
     nif: String;
     email: String;
-    defaultPayMethod: String;
     commercialName: String;
     fiscalName: String;
     address: String;
