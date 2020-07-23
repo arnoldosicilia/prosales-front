@@ -1,0 +1,265 @@
+.payment-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.payment-wrapper .payment-content {
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.payment-wrapper .payment-content .left-wrapper {
+    width: 70%;
+    height: 100%;
+    background-color: #f1f3f8;
+    padding: 20px;
+    position: relative;
+}
+
+.payment-wrapper .payment-content .left-wrapper .client {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.payment-wrapper .payment-content .left-wrapper .client .client-header {
+    color: var(--second-color);
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.payment-wrapper .payment-content .left-wrapper .client .client-name {
+    font-size: 3em;
+}
+
+.payment-wrapper .payment-content .left-wrapper .payment-method {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.payment-wrapper .payment-content .left-wrapper .payment-method>div {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    background-color: var(--second-color);
+    color: #fff;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+.payment-wrapper .payment-content .left-wrapper .payment-method>div.selected {
+    background-color: var(--second-color-2);
+    box-shadow: inset 0 1px 2px 2px rgba(0, 0, 0, 0.15);
+}
+
+.payment-wrapper .payment-content .left-wrapper .payment-method>div i {
+    margin-right: 10px;
+    color: #fff
+}
+
+.payment-wrapper .payment-content .left-wrapper .payment-buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.payment-wrapper .payment-content .left-wrapper .payment-buttons .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.payment-wrapper .payment-content .left-wrapper .payment-buttons .button.cancel {
+    width: 30%;
+    border: 2px solid var(--red);
+    color: var(--red);
+    margin: 8px 0 8px 8px;
+}
+
+.payment-wrapper .payment-content .left-wrapper .payment-buttons .button.complete {
+    width: 70%;
+    background-color: #41af4b;
+    margin: 8px;
+}
+
+.payment-wrapper .payment-content .left-wrapper .payment-buttons .button.complete.disabled {
+    background-color: #a0a0a0;
+    cursor: default;
+}
+
+.payment-wrapper .payment-content .left-wrapper .amount-pay-remaining {
+    margin-bottom: 16px;
+}
+
+.payment-wrapper .payment-content .left-wrapper .amount-pay-remaining .amount-header {
+    color: var(--second-color);
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.payment-wrapper .payment-content .left-wrapper .amount-pay-remaining .input-container {
+    display: flex;
+    align-items: center;
+    font-size: 2.8em;
+}
+
+.payment-wrapper .payment-content .left-wrapper .amount-pay-remaining .input-container input {
+    width: 100%;
+    height: 50px;
+    background-color: inherit;
+    border: 0;
+    border-bottom: 2px solid #e0e0e0;
+    color: #505050
+}
+
+.payment-wrapper .payment-content .left-wrapper .amount-pay-remaining .input-container input:focus {
+    outline: none;
+}
+
+.payment-wrapper .payment-content .right-wrapper {
+    width: 30%;
+    height: 100%;
+    background-color: #212121;
+    padding: 20px
+}
+
+.payment-wrapper .payment-content .right-wrapper .ticket {
+    width: 100%;
+    height: 80%;
+    overflow-y: scroll;
+    background-color: #fff;
+    font-size: 0.8em;
+    padding: 20px 40px;
+    font-family: monospace;
+    margin-bottom: 20px;
+}
+
+.payment-wrapper .payment-content .right-wrapper .ticket .company-data {
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+.payment-wrapper .payment-content .right-wrapper .ticket .company-data p {
+    line-height: 1.5em;
+}
+
+.payment-wrapper .payment-content .right-wrapper .ticket .ticket-data {
+    margin-bottom: 1.5em;
+}
+
+.payment-wrapper .payment-content .right-wrapper .ticket .ticket-data .item.header {
+    font-weight: bold;
+}
+
+.payment-wrapper .payment-content .right-wrapper .ticket .ticket-data .item {
+    display: flex;
+    align-items: center;
+}
+
+.payment-wrapper .payment-content .right-wrapper .ticket .ticket-data .item .qty {
+    width: 15%;
+}
+
+.payment-wrapper .payment-content .right-wrapper .ticket .ticket-data .item .name {
+    width: 65%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.payment-wrapper .payment-content .right-wrapper .ticket .ticket-data .item .total {
+    width: 20%;
+    text-align: right;
+}
+
+.payment-wrapper .payment-content .right-wrapper .ticket .ticket-resume {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.payment-wrapper .payment-content .right-wrapper .ticket .ticket-resume>div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.payment-wrapper .payment-content .right-wrapper .ticket .ticket-resume p {
+    width: 50%;
+    text-align: right;
+}
+
+.payment-wrapper .payment-content .right-wrapper .ticket .ticket-resume .total {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.payment-wrapper .payment-content .right-wrapper .ticket .ticket-resume .title {
+    font-weight: bold;
+}
+
+
+/* DISCOUNT  */
+
+.payment-wrapper .payment-content .right-wrapper .discount {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 1em;
+}
+
+.payment-wrapper .payment-content .right-wrapper .discount p {
+    width: 65%;
+}
+
+.payment-wrapper .payment-content .right-wrapper .discount input {
+    width: 35%;
+    border: 0;
+    background-color: #3a3a3a;
+    color: #fff;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.payment-wrapper .payment-content .right-wrapper .discount input:focus {
+    outline: none;
+}
+
+/* TOTAL */
+
+.payment-wrapper .payment-content .right-wrapper .total-basket {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: #fff
+}

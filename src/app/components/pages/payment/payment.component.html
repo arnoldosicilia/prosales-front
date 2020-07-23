@@ -1,0 +1,112 @@
+<div class="payment-wrapper">
+    <div class="payment-content">
+        <div class="left-wrapper">
+            <div class="client">
+                <p class="client-header">Client:</p>
+                <p class="client-name">client.fiscalName</p>
+            </div>
+            <mat-tab-group mat-align-tabs="start">
+
+
+                <mat-tab label="Cash" id="cash" name="cash">
+                    <div>
+                        <div class="amount-pay-remaining">
+                            <p class="amount-header">Recibed:</p>
+                            <div class="input-container">
+                                <input type="number" name="deposited" value="" /> €
+                            </div>
+                        </div>
+                        <div class="amount-pay-remaining">
+                            <p class="amount-header">this.state.remaining > 0 ? "Restante:" : "Cambio"</p>
+                            <div class="input-container">€</div>
+                        </div>
+                    </div>
+                </mat-tab>
+
+                <mat-icon>credit_card</mat-icon>
+                <mat-tab label="Credit Card">
+                    <h2>Proceed with the Card Lector Instructions</h2>
+                </mat-tab>
+            </mat-tab-group>
+
+
+            <div class="payment-buttons">
+                <div class="button cancel">
+                    CANCELAR
+                </div>
+                <div class="button complete">
+                    COMPLETAR
+                </div>
+            </div>
+        </div>
+        <div class="right-wrapper">
+            <div class="ticket">
+                <div class="company-data">
+                    <p>company.data.fiscalName</p>
+                    <p>company.data.address</p>
+                    <p>company.data.city</p>
+                    <p>this.state.company.data.email</p>
+                    <p>this.state.company.data.telNumber</p>
+                    <br />
+                    <p>------------------------------------</p>
+                </div>
+                <div class="ticket-data">
+                    <div class="item header">
+                        <div class="qty">
+                            CANT
+                        </div>
+                        <div class="name">
+                            PRODUCTO
+                        </div>
+                        <div class="total">
+                            TOTAL
+                        </div>
+                    </div>
+
+                    <div key="product._id" class="item">
+                        <div class="qty">
+                            product.qty
+                        </div>
+                        <div class="name">
+                            product.name
+                        </div>
+                        <div class="total">
+                            product.total.toFixed(2)€
+                        </div>
+                    </div>
+
+                </div>
+                <div class="ticket-resume">
+
+
+                    <div>
+                        <p class="title">SUB TOTAL:</p>
+                        <p>this.state.amountValueCopy€</p>
+                    </div>
+                    <div>
+                        <p class="title">DESCUENTO:</p>
+                        <p>this.state.discountValue€</p>
+                    </div>
+
+
+                    <div>
+                        <p class="title">IVA inc.:</p>
+                        <p>this.state.tax €</p>
+                    </div>
+                    <div>
+                        <p class="title">TOTAL:</p>
+                        <p> this.state.amountValue €</p>
+                    </div>
+                </div>
+            </div>
+            <div class="discount">
+                <p>Descuento €:</p>
+                <input type="number" value="this.state.discountValue" name="discount" />
+            </div>
+            <div class="total-basket">
+                <p>TOTAL: this.state.amountValue€</p>
+            </div>
+        </div>
+    </div>
+
+</div>
