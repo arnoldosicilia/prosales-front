@@ -57,13 +57,17 @@ export class PaymentComponent implements OnInit {
     this.amountValueCopy = this.data.amountValue;
     this.remaining = this.data.amountValue;
     this.basket = this.data.basket;
-    this.tax = this.data.tax;
+    this.tax = 0;
+    this.discountValue = 0;
     this.showClient = false;
     this.showCompany = false;
     this.deposited = 0;
     this.username = AuthUtils.getUsername();
     this.disableComplete = true;
     this.client = this.data.client;
+    this.getUser();
+
+    console.log(this.client)
 
   }
 
@@ -71,26 +75,35 @@ export class PaymentComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  getData = (companyId, clientId) => {
-    this.companyService.getCompany(companyId).subscribe(data => this.company = data);
-    this.clientService.getClient(clientId).subscribe(data => this.client = data);
-    this.companyService.getUserByUsername(this.username).subscribe(data => this.user = data);
+  getUser() {
+    this.companyService.getUserByUsername(this.username).subscribe(data => {
+      this.user = data
+      this.getCompany();
+    });
+  }
+
+  getCompany() {
+    this.companyService.getCompany(this.user.comapanyId).subscribe(data => this.company = data);
   }
 
   addSale() {
+    console.log(this.username)
+    console.log(this.user)
+    const productsIds = [];
+    this.basket.map(x => productsIds.push(x.id))
 
-    const newSale: Sale = {
+    const newSale = {
       author: this.user.id,
       client: this.client.id,
-      products: this.basket,
-      paymentMethod: this.paymentMethod,
-      deposited: this.deposited,
-      total: this.amountValue,
-      remaining: this.remaining,
-      discount: this.discountValue,
-      tax: this.tax
+      products: productsIds,
+      deposited: this.deposited.toString(),
+      total: this.amountValue.toString(),
+      remaining: this.remaining.toString(),
+      discount: this.discountValue.toString(),
+      tax: this.tax.toString(),
     };
 
+    console.log(newSale);
     this.salesService.createSale(newSale);
     newSale.products.map(elm => this.productService.removeStock(elm.id, elm.qty));
     this.closeModal();
@@ -126,5 +139,4 @@ export class PaymentComponent implements OnInit {
 
 
 }
-
 

@@ -25,8 +25,9 @@ import { TableComponent } from './components/ui/table/table.component';
 import { PaymentComponent } from './components/pages/payment/payment.component';
 import { LoginComponent } from './components/login/login.component';
 import { ClientFormComponent } from './components/pages/clients/client-form/client-form.component';
-import { FormComponent } from './components/ui/form/form.component';
 import { EditClientFormComponent } from './components/pages/clients/edit-client-form/edit-client-form.component';
+import { EditProductFormComponent } from './components/pages/products/edit-product-form/edit-product-form.component';
+import { EditSalesFormComponent } from './components/pages/sales/edit-sales-form/edit-sales-form.component';
 
 
 @NgModule({
@@ -43,8 +44,9 @@ import { EditClientFormComponent } from './components/pages/clients/edit-client-
     PaymentComponent,
     LoginComponent,
     ClientFormComponent,
-    FormComponent,
-    EditClientFormComponent
+    EditClientFormComponent,
+    EditProductFormComponent,
+    EditSalesFormComponent
   ],
   imports: [
     BrowserModule,

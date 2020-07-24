@@ -42,6 +42,18 @@ export class ProductService {
             .subscribe(data => this.router.navigate(['products']), err => console.log(err));
     }
 
+    updateProduct(product: Product): Observable<Product> {
+        const url = `${this.urlBasic}product${'/'}${product.id}`;
+        console.log(url);
+        return this.http.put<Product>(url, product, this.httpOptions);
+    }
+
+    deleteProduct(id: number): void {
+        const url = `${this.urlBasic}product${'/'}${id}`;
+        console.log(url);
+        this.http.delete(url, this.httpOptions);
+    }
+
     removeStock(productId: number, removedQty: number) {
         const url = `${this.urlBasic}product${'/'}${productId}${'/'}${removedQty}`;
         this.http.patch<Product>(url, this.httpOptions);

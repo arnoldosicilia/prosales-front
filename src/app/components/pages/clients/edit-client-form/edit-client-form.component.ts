@@ -23,7 +23,7 @@ export class EditClientFormComponent implements OnInit {
   client: Client;
   fieldColspan = 4;
   errorMessage: string;
-  fields: string[] = ['nif', 'email', 'defaultPayMethod', 'commercialName', 'fiscalName', 'address', 'city', 'province', 'zipCode', 'country', 'web', 'telNumber', 'credit'];
+  fields: string[] = ['nif', 'email', 'commercialName', 'fiscalName', 'address', 'city', 'province', 'zipCode', 'country', 'web', 'telNumber', 'credit'];
 
 
   constructor(
@@ -35,12 +35,7 @@ export class EditClientFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.sub = this.route.params.subscribe(
-      params => {
-        let id = params['id'];
-        this.getClient(id);
-      }
-    );
+    this.client = this.data.client;
 
     this.clientForm = this.fb.group({
       nif: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
@@ -56,16 +51,12 @@ export class EditClientFormComponent implements OnInit {
       telNumber: ['', [Validators.required]],
       credit: ['', [Validators.required]]
     })
-  }
 
-  getClient(id: number): void {
-    this.clientService.getClient(id)
-      .subscribe(
-        (client: Client) => this.onClientRetrieved(client)
-      );
+    this.onClientRetrieved(this.data.client);
   }
 
   onClientRetrieved(client: Client): void {
+
     this.client = client;
     this.clientForm.get('nif').setValue(this.client.nif);
     this.clientForm.get('email').setValue(this.client.email);
@@ -95,13 +86,13 @@ export class EditClientFormComponent implements OnInit {
   get credit() { return this.clientForm.get('credit'); }
 
 
-  saveClient(): void {
+  updateClient(): void {
 
     if (this.clientForm.dirty && this.clientForm.valid) {
       // Copy the form values over the customer object values
       const client = Object.assign({}, this.client, this.clientForm.value);
       console.log(client);
-      this.clientService.createClient(client)
+      this.clientService.updateClient(client)
         .subscribe(
           () => this.onSaveComplete(),
           (error: any) => this.errorMessage = <any>error
@@ -109,12 +100,22 @@ export class EditClientFormComponent implements OnInit {
     } else if (!this.clientForm.dirty) {
       this.onSaveComplete();
     }
-    console.log(this.clientForm.valid)
+
+  }
+
+  deleteClient() {
+    console.log("se llama al delete client")
+    this.clientService.deleteClient(this.client.id);
+    this.onSaveComplete();
   }
 
   onSaveComplete(): void {
+    console.log("Se llama al savecomplete")
     // Reset the form to clear the flags
     this.clientForm.reset();
     this.dialogRef.close();
   }
+
+
 }
+

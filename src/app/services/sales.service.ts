@@ -34,10 +34,10 @@ export class SalesService {
     }
 
     // tslint:disable-next-line: typedef
-    createSale(sale: Sale) {
-        const url = `${this.urlBasic}`;
+    createSale(sale) {
+        const url = `${this.urlBasic}sales`;
         console.log(url);
-        return this.http.post<Sale>(url.concat('sale'), sale, this.httpOptions)
+        return this.http.post<Sale>(url, sale, this.httpOptions)
             .subscribe(data => this.router.navigate(['sales']), err => console.log(err));
     }
 

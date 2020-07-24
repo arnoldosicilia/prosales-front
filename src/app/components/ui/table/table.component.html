@@ -22,7 +22,7 @@
         <ng-container matColumnDef="edit" *ngIf="isAdmin">
             <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <button mat-mini-fab color="accent" (click)="openEdit()">
+                <button mat-mini-fab color="accent" (click)="openEdit(element)">
                     <mat-icon>edit</mat-icon>
                 </button>
             </mat-cell>

@@ -40,6 +40,20 @@ export class ClientService {
         return this.http.post<Client>(url.concat('clients'), client, this.httpOptions);
     }
 
+    updateClient(client: Client): Observable<Client> {
+        const url = `${this.urlBasic}client${'/'}${client.id}`;
+        console.log(url);
+        return this.http.put<Client>(url, client, this.httpOptions);
+    }
+
+    deleteClient(id: number): void {
+        const url = `${this.urlBasic}client${'/'}${id}`;
+        console.log(url);
+        this.http.delete(url, this.httpOptions);
+    }
+
+
+
     // tslint:disable-next-line: typedef
     private extractData(response: Response) {
         const body: any = response.json ? response.json() : response;

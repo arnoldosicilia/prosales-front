@@ -3,6 +3,7 @@ import { Client } from '../../../models/client.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ClientFormComponent } from './client-form/client-form.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ClientService } from '../../../services/client.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -24,18 +25,25 @@ export class ClientsComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nif', 'email', 'commercialName', 'fiscalName', 'city', 'province', 'country', 'web', 'telNumber', 'credit'];
   dataSource: any = null;
   isAdmin: boolean;
+  dialogRef;
+
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(
     private clientService: ClientService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.isAdmin = AuthUtils.isAdmin();
     this.isErrorLoading = !(this.isLoading = true);
+    this.getData();
+  }
+
+  getData() {
     this.clientService.getClients().subscribe(data => {
       this.dataSource = data;
       this.isLoading = false;
@@ -45,11 +53,16 @@ export class ClientsComponent implements OnInit {
       console.log(err);
     });
   }
+
   openCrateToggle() {
     const dialogRef = this.dialog.open(ClientFormComponent, {
       data: {},
       height: '470px',
       width: '800px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('closed');
     });
   }
 }
