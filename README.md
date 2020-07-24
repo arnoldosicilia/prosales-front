@@ -1,11 +1,5 @@
 ![IronHack Logo](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_d5c5793015fec3be28a63c4fa3dd4d55.png)
 # IronHack Final Project - PROSALES
-<p align="center"><strong> Arnoldo Sicilia </strong></p>
-* [Goal](#goal)
-* [Tools](#tools)
-* [How it works](#how-it-works)
-* [Documentation](#documentation)
-* [Test Coverage](#test-coverage)
 
 ## <a name="goal"></a>Goal
 The main objective of this project is to apply all the knowledge acquired throughout the bootcamp creating a web application with a backend in Springboot and a frontend in Angular, always applying good practices. My application consists of a collection management system for small businesses. where you can register / edit customers, and create new purchases. If you have administrator permissions you will be allowed to edit different elements.
@@ -26,8 +20,7 @@ The main objective of this project is to apply all the knowledge acquired throug
 In order to get the whole project up and running, you must first start the Eureka Server and then all of the services. You can do this either clicking "Run" on the Main Class of each project or typing "mvn spring-boot:run" in the terminal, once located in the project directory.
 Then you can either check the Swagger Documentation below, which will provide you with all the routes and its functioning, or check the [edge-service
 ](#) where all the main routes are allocated in each controller.
-If you are making the requests through Postman, you must set Authorization Type to "Basic Auth" and set "username" and "password" to "*admin*" or "*jorge*" as shown below to access as an *Administrator*, otherwise you can access with *Client* credentials where "username" and "password" is "*pepe*".
-<a href="https://ibb.co/x58YR5s"><img src="https://i.ibb.co/ggFdBg7/Captura-de-pantalla-de-2020-07-09-20-02-26.png" alt="Captura-de-pantalla-de-2020-07-09-20-02-26" border="0"></a>
+
 ## <a name="documentation"></a>Documentation
 1. When you have al the proyects runing, enter [THIS LINK](http://localhost:8080//swagger-ui.html#/) you'll find the configuration of all the endpoints on the application.
 ## <a name="test-coverage"></a>Test Coverage
