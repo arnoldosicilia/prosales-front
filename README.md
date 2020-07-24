@@ -30,3 +30,7 @@ Then you can either check the Swagger Documentation below, which will provide yo
 You can check all the unit and integration tests in each project by clicking "Run all tests with Coverage" in the main folder once opened in IntelliJ.
 the test coverage is above 80% in all the services.
 All routes have been tested and can be checked either with Postman or Swagger.
+
+## <a name="test-coverage"></a>Deploy
+
+Due to the time constraint I could not deploy this proyect but I will keep trying and update it when I reach it.
