@@ -35,11 +35,11 @@ All routes have been tested and can be checked either with Postman or Swagger.
 
 Due to the time constraint I could not deploy this proyect but I will keep trying and update it when I reach it.
 
-https://github.com/arnoldosicilia/prosale-eureka-server
-https://github.com/arnoldosicilia/prosales-front
-https://github.com/arnoldosicilia/prosales-clients-service
-https://github.com/arnoldosicilia/prosales-product-service
-https://github.com/arnoldosicilia/prosales-sales-service
-https://github.com/arnoldosicilia/prosales-user-service
-https://github.com/arnoldosicilia/prosales-company-service
-https://github.com/arnoldosicilia/porsales-provider-service
+- https://github.com/arnoldosicilia/prosale-eureka-server
+- https://github.com/arnoldosicilia/prosales-front
+- https://github.com/arnoldosicilia/prosales-clients-service
+- https://github.com/arnoldosicilia/prosales-product-service
+- https://github.com/arnoldosicilia/prosales-sales-service
+- https://github.com/arnoldosicilia/prosales-user-service
+- https://github.com/arnoldosicilia/prosales-company-service
+- https://github.com/arnoldosicilia/porsales-provider-service
