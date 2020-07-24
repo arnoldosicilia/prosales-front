@@ -8,14 +8,17 @@ The main objective of this project is to apply all the knowledge acquired throug
 ](http://localhost:8761/).
 - [edge-service
 ](#): This service is used as the entry point of the application. It is placed on the 8080 port and will handle all further requests attached to the rest of microservices, it is also responsible for controlling the security of the API to access the endpoints.
-- [user-service
+- [User-service
 ](#): This service manages the User and their roles and registry both of them in a SQL database.
-- [clients-service
+- [Clients-service
 ](#): The client service manage the registration of new clients by the user;
 - [Product-service
 ](#): Products service manage the acces to the products database wich is bobulated wich some data extraced from a web scratching and stores them in a SQL database.
 - [Sales-service
 ](#): This service register the sales in a MongoDB.
+- [Providers-service & Company-service
+](#): Where created to add more complexity to this project in the future that i was not vbe able to add now due to the time constraint.
+
 #### How it Works
 In order to get the whole project up and running, you must first start the Eureka Server and then all of the services. You can do this either clicking "Run" on the Main Class of each project or typing "mvn spring-boot:run" in the terminal, once located in the project directory.
 Then you can either check the Swagger Documentation below, which will provide you with all the routes and its functioning, or check the [edge-service
